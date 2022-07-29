@@ -1,0 +1,134 @@
+﻿@model IPagedList<OnlineShopping.Models.Tbl_Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using PagedList;
+@using PagedList.Mvc;
+
+
+<div id="themeSlider" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#themeSlider" data-slide-to="0" class="active"></li>
+        <li data-target="#themeSlider" data-slide-to="1"></li>
+        <li data-target="#themeSlider" data-slide-to="2"></li>
+    </ol>
+
+    <div class="carousel-inner">
+        <div class="item active">
+            <div class="imgOverlay"></div>
+            <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzkwMHg1MDAvYXV0by8jNzc3OiM1NTUvdGV4dDpGaXJzdCBzbGlkZQpDcmVhdGVkIHdpdGggSG9sZGVyLmpzIDIuNi4wLgpMZWFybiBtb3JlIGF0IGh0dHA6Ly9ob2xkZXJqcy5jb20KKGMpIDIwMTItMjAxNSBJdmFuIE1hbG9waW5za3kgLSBodHRwOi8vaW1za3kuY28KLS0+PGRlZnM+PHN0eWxlIHR5cGU9InRleHQvY3NzIj48IVtDREFUQVsjaG9sZGVyXzE1NmQ2MzEwNTczIHRleHQgeyBmaWxsOiM1NTU7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6NDVwdCB9IF1dPjwvc3R5bGU+PC9kZWZzPjxnIGlkPSJob2xkZXJfMTU2ZDYzMTA1NzMiPjxyZWN0IHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiBmaWxsPSIjNzc3Ii8+PGc+PHRleHQgeD0iMzA4LjI5Njg3NSIgeT0iMjcwLjE3OTY4NzUiPkZpcnN0IHNsaWRlPC90ZXh0PjwvZz48L2c+PC9zdmc+" alt="First slide">
+            <div class="carousel-caption">
+                <h3>First slide</h3>
+                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="imgOverlay"></div>
+            <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzkwMHg1MDAvYXV0by8jNjY2OiM0NDQvdGV4dDpTZWNvbmQgc2xpZGUKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNTZkNjMxMjdlZiB0ZXh0IHsgZmlsbDojNDQ0O2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjQ1cHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1NmQ2MzEyN2VmIj48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzY2NiIvPjxnPjx0ZXh0IHg9IjI2NC45NTMxMjUiIHk9IjI3MC4xNzk2ODc1Ij5TZWNvbmQgc2xpZGU8L3RleHQ+PC9nPjwvZz48L3N2Zz4=" alt="Second slide">
+            <div class="carousel-caption">
+                <h3>Second slide</h3>
+                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="imgOverlay"></div>
+            <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzkwMHg1MDAvYXV0by8jNTU1OiMzMzMvdGV4dDpUaGlyZCBzbGlkZQpDcmVhdGVkIHdpdGggSG9sZGVyLmpzIDIuNi4wLgpMZWFybiBtb3JlIGF0IGh0dHA6Ly9ob2xkZXJqcy5jb20KKGMpIDIwMTItMjAxNSBJdmFuIE1hbG9waW5za3kgLSBodHRwOi8vaW1za3kuY28KLS0+PGRlZnM+PHN0eWxlIHR5cGU9InRleHQvY3NzIj48IVtDREFUQVsjaG9sZGVyXzE1NmQ2MzEzODdjIHRleHQgeyBmaWxsOiMzMzM7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6NDVwdCB9IF1dPjwvc3R5bGU+PC9kZWZzPjxnIGlkPSJob2xkZXJfMTU2ZDYzMTM4N2MiPjxyZWN0IHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiBmaWxsPSIjNTU1Ii8+PGc+PHRleHQgeD0iMjk4LjMyMDMxMjUiIHk9IjI3MC4xNzk2ODc1Ij5UaGlyZCBzbGlkZTwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" alt="Third slide">
+            <div class="carousel-caption">
+                <h3>Third slide</h3>
+                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <a class="left carousel-control" href="#themeSlider" data-slide="prev">
+        <span class="fa fa-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#themeSlider" data-slide="next">
+        <span class="fa fa-chevron-right"></span>
+    </a>
+
+
+</div>
+<div class="olContent f1"><h2 style="color:black">Search Product/Category</h2></div>
+<div class="olSearch fr">
+    <input type="text" placeholder="Enter Keyword" name="searchKey" class="inputComn houseText form-control" />
+    <div class="searchIcon">
+        <button type="button" class="searchBtn">
+            <img src="~/Image/icons8-search.gif" style="height: 24px;" />
+        </button>
+    </div>
+
+
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-header">
+            <h2>Our Producrs <small>trending</small></h2>
+        </div>
+    </div>
+</div>
+
+<div class="row product-container">
+
+    <p class="SearchTask">
+
+        @using (Html.BeginForm("Index", "Product", FormMethod.Get))
+        {
+            @Html.TextBox("search") <input type="submit" value="search" />
+        }
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom:8px">
+            <div class="thumbnail product-item" style="height:330px">
+
+                <img class="img-responsive" title="Click to View Product detail"
+                     style="cursor:pointer;height:160px;width:100%"
+                     src="@Url.Content(item.ProductImage)" width="250" height="250" />
+
+
+                <div class="caption">
+                    <h5> @Html.DisplayFor(modelItem => item.ProductName)</h5>
+                    <p> @Html.DisplayFor(modelItem => item.Quantity) $.</p>
+                    <p> @Html.DisplayFor(modelItem => item.IsActive)</p>
+                    <div class="product-item-badge"> @Html.DisplayFor(modelItem => item.CreatedDate)</div>
+
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }, new { @class = "Edit" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ProductId }, new { @class = "Details" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductId }, new { @class = "Delete" })
+                    <style>
+                        .caption .Edit {
+                            background-color: #0219f7;
+                            color: white;
+                            padding: 3px 10px;
+                            border-radius: 20px;
+                        }
+
+                        .caption .Details {
+                            background-color: #93098b;
+                            color: white;
+                            padding: 3px 10px;
+                            border-radius: 20px;
+                        }
+
+                        .caption .Delete {
+                            background-color: #b30000;
+                            color: white;
+                            padding: 3px 10px;
+                            border-radius: 20px;
+                        }
+                    </style>
+
+                </div>
+            </div>
+        </div>
+    }
+</div>
+@Html.PagedListPager(Model, i => Url.Action("Index", "Product", new { i, search = Request.QueryString["search"] }))
+
